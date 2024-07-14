@@ -1,5 +1,4 @@
-// featuredRecipes.js
-const API_KEY = '3188a02f829a47ba93ed37b2b58b4f06';
+const API_KEY = '39df82363fda4afba12355d96503a20e';
 
 async function fetchRandomRecipes(count = 5) {
   const url = `https://api.spoonacular.com/recipes/random?number=${count}&apiKey=${API_KEY}`;
