@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search - Recipe Finder and Meal Planner</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/recipe-search.css">
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/recipeSearch.js"></script>
+    <script type="module" src="js/loadMealPlan.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Recipe Finder</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipe-search.html">Recipe Search</a></li>
+                <li><a href="meal-planner.html">Meal Planner</a></li>
+                <li><a href="#shopping-list">Shopping List</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#cooking-tips">Cooking Tips</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="recipe-search">
+            <h1>Recipe Search</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search recipes...">
+                <button id="search-button">Search</button>
+            </div>
+            
+            <div class="search-filters">
+                <h2>Filters</h2>
+                <div class="filter-group">
+                    <h3>Ingredients</h3>
+                    <input type="text" id="ingredients-filter" placeholder="Enter ingredients">
+                </div>
+                <div class="filter-group">
+                    <h3>Cuisine</h3>
+                    <select id="cuisine-filter">
+                        <option value="">All Cuisines</option>
+                        <option value="italian">Italian</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="indian">Indian</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <h3>Diet</h3>
+                    <select id="diet-filter">
+                        <option value="">All Diets</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="keto">Keto</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <h3>Intolerances</h3>
+                    <select id="intolerances-filter" multiple>
+                        <option value="dairy">Dairy</option>
+                        <option value="egg">Egg</option>
+                        <option value="gluten">Gluten</option>
+                        <option value="peanut">Peanut</option>
+                        <option value="soy">Soy</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="search-results">
+            </div>
+            
+            <div class="pagination">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div>
+            <a href="#contact">Contact</a> | 
+            <a href="#social-media">Social Media</a> | 
+            <a href="#app-download">App Download</a>
+        </div>
+        <p>&copy; 2024 Recipe Finder and Meal Planner. All rights reserved.</p>
+    </footer>
+</body>
+</html>

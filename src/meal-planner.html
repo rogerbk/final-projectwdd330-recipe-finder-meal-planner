@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner - Recipe Finder and Meal Planner</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/meal-planner.css">
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/mealPlanner.js"></script>
+    <script type="module" src="js/loadMealPlan.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Recipe Finder</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipe-search.html">Recipe Search</a></li>
+                <li><a href="meal-planner.html">Meal Planner</a></li>
+                <li><a href="#shopping-list">Shopping List</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#cooking-tips">Cooking Tips</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="meal-planner">
+            <h1>Meal Planner</h1>
+            <div class="planner-container">
+                <div class="available-recipes">
+                    <h2>Available Recipes</h2>
+                    <div id="recipe-list">
+                        
+                    </div>
+                </div>
+                <div class="weekly-plan">
+                    <table id="meal-plan-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Breakfast</th>
+                                <td data-day="monday" data-meal="breakfast"></td>
+                                <td data-day="tuesday" data-meal="breakfast"></td>
+                                <td data-day="wednesday" data-meal="breakfast"></td>
+                                <td data-day="thursday" data-meal="breakfast"></td>
+                                <td data-day="friday" data-meal="breakfast"></td>
+                                <td data-day="saturday" data-meal="breakfast"></td>
+                                <td data-day="sunday" data-meal="breakfast"></td>
+                            </tr>
+                            <tr>
+                                <th>Lunch</th>
+                                <td data-day="monday" data-meal="lunch"></td>
+                                <td data-day="tuesday" data-meal="lunch"></td>
+                                <td data-day="wednesday" data-meal="lunch"></td>
+                                <td data-day="thursday" data-meal="lunch"></td>
+                                <td data-day="friday" data-meal="lunch"></td>
+                                <td data-day="saturday" data-meal="lunch"></td>
+                                <td data-day="sunday" data-meal="lunch"></td>
+                            </tr>
+                            <tr>
+                                <th>Dinner</th>
+                                <td data-day="monday" data-meal="dinner"></td>
+                                <td data-day="tuesday" data-meal="dinner"></td>
+                                <td data-day="wednesday" data-meal="dinner"></td>
+                                <td data-day="thursday" data-meal="dinner"></td>
+                                <td data-day="friday" data-meal="dinner"></td>
+                                <td data-day="saturday" data-meal="dinner"></td>
+                                <td data-day="sunday" data-meal="dinner"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="planner-actions">
+                <button id="save-plan">Save Plan</button>
+                <button id="export-plan">Export Plan</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <!-- Existing footer content -->
+    </footer>
+</body>
+</html>
