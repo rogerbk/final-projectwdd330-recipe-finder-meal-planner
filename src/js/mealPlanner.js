@@ -1,4 +1,4 @@
-const API_KEY = 'fd743020e4104a889aba9b4dbcb95499';
+const API_KEY = 'fd743020e4104a889aba9b4dbcb95499*';
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchRandomRecipes();
