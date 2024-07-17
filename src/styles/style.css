@@ -28,8 +28,17 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--primary-color);
+  color: white;
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 
 header {
   background-color: var(--secondary-color);
@@ -38,6 +47,7 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .hamburger {
@@ -194,6 +204,42 @@ footer a:hover {
   color: var(--accent-color-1);
 }
 
+/* Hamburger menu styles */
+.hamburger span {
+  transition: transform 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Quick link styles */
+.quick-link {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.quick-link:hover {
+  transform: translateY(-5px);
+}
+
+
+@keyframes carousel-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   header {
@@ -215,8 +261,30 @@ footer a:hover {
     padding: 1rem;
   }
 
+  .nav-menu li {
+    margin-left: 1rem;
+  }
+
   .nav-menu.active {
     display: flex;
+  }
+
+  .nav-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-menu li a.active {
+    background-color: var(--accent-color-1);
+    color: var(--primary-color);
+  }
+
+  .nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
   }
 
   header nav ul li {

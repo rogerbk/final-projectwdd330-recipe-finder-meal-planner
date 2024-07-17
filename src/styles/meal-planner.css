@@ -60,6 +60,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .planner-actions button {
@@ -81,9 +82,35 @@
   border: 2px dashed #6c757d;
 }
 
-#meal-plan-table td {
-  min-height: 100px;
-  height: 100px;
-  vertical-align: top;
-  transition: all 0.3s ease;
+@media (max-width: 768px) {
+  .meal-planner {
+    padding: 1rem;
+  }
+
+  .planner-container {
+    flex-direction: column;
+  }
+
+  .available-recipes,
+  .weekly-plan {
+    width: 100%;
+  }
+
+  #meal-plan-table {
+    font-size: 0.9rem;
+  }
+
+  #meal-plan-table th,
+  #meal-plan-table td {
+    padding: 0.25rem;
+  }
+
+  .planner-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .planner-actions button {
+    margin-bottom: 0.5rem;
+  }
 }
