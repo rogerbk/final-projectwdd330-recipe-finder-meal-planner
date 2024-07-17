@@ -11,6 +11,7 @@ export default defineConfig({
         main: path.resolve(__dirname, 'src/index.html'),
         mealPlanner: path.resolve(__dirname, 'src/meal-planner.html'),
         recipeSearch: path.resolve(__dirname, 'src/recipe-search.html'),
+        shoppingList: path.resolve(__dirname, 'src/shopping-list.html'),
       },
     },
   },

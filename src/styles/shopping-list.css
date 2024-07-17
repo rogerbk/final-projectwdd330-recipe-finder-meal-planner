@@ -1,0 +1,154 @@
+.shopping-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.shopping-list-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.categories {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.category {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.category h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.category ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.category li button {
+    background-color: var(--accent-color-3);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.category li button:hover {
+    background-color: var(--accent-color-2);
+}
+
+.add-item-section {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-item-section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#newItem,
+#itemCategory {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+#addItem {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addItem:hover {
+    background-color: var(--primary-color);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.actions button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: var(--primary-color);
+}
+
+#suggestions {
+    background-color: white;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    width: calc(100% - 2rem);
+    z-index: 1000;
+}
+
+#suggestions div {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+#suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .shopping-list-container {
+        flex-direction: column;
+    }
+
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
