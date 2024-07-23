@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addItemButton.addEventListener('click', addItem);
     newItemInput.addEventListener('input', debounce(searchIngredients, 300));
     
-    // Load saved items when the page loads
     loadSavedItems();
     
     async function searchIngredients() {
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return value;
             }
         }
-        return 'pantry'; // default category
+        return 'pantry';
     }
 
     function addItemToList(itemName, category) {
@@ -86,10 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         li.querySelector('.remove-item').addEventListener('click', () => {
             ul.removeChild(li);
-            saveItems(); // Save items after removing
+            saveItems(); 
         });
 
-        saveItems(); // Save items after adding
+        saveItems(); 
     }
 
     function addItem() {
@@ -102,13 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Enable checking off items
     categories.forEach(category => {
         const ul = category.querySelector('ul');
         ul.addEventListener('click', (e) => {
             if (e.target.tagName === 'LI') {
                 e.target.classList.toggle('checked');
-                saveItems(); // Save items after checking/unchecking
+                saveItems(); 
             }
         });
     });
@@ -146,35 +144,79 @@ document.addEventListener('DOMContentLoaded', () => {
                     ul.appendChild(li);
                     li.querySelector('.remove-item').addEventListener('click', () => {
                         ul.removeChild(li);
-                        saveItems(); // Save items after removing
+                        saveItems(); 
                     });
                 });
             });
         }
     }
     
-    // Share, Print, and Export functionality (placeholder)
-    document.getElementById('shareList').addEventListener('click', () => alert('Share functionality to be implemented'));
+    // Share functionality
+    document.getElementById('shareList').addEventListener('click', shareList);
     document.getElementById('printList').addEventListener('click', () => window.print());
-    document.getElementById('exportList').addEventListener('click', () => {
-        const items = JSON.parse(localStorage.getItem('shoppingList'));
-        const blob = new Blob([JSON.stringify(items, null, 2)], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'shopping_list.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    });
+    document.getElementById('exportList').addEventListener('click', exportList);
 });
 
-// Utility function to debounce API calls
+
 function debounce(func, delay) {
     let timeoutId;
     return function (...args) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), delay);
     };
+}
+
+// Export list as .txt file
+function exportList() {
+    const items = JSON.parse(localStorage.getItem('shoppingList'));
+    let textContent = 'Shopping List\n\n';
+    
+    Object.entries(items).forEach(([category, categoryItems]) => {
+        textContent += `${category.toUpperCase()}:\n`;
+        categoryItems.forEach(item => {
+            textContent += `${item.checked ? '[x]' : '[ ]'} ${item.name}\n`;
+        });
+        textContent += '\n';
+    });
+    
+    const blob = new Blob([textContent], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'shopping_list.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Share list functionality
+function shareList() {
+    const items = JSON.parse(localStorage.getItem('shoppingList'));
+    let textContent = 'Shopping List\n\n';
+    
+    Object.entries(items).forEach(([category, categoryItems]) => {
+        textContent += `${category.toUpperCase()}:\n`;
+        categoryItems.forEach(item => {
+            textContent += `${item.checked ? '[x]' : '[ ]'} ${item.name}\n`;
+        });
+        textContent += '\n';
+    });
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'My Shopping List',
+            text: textContent
+        }).then(() => {
+            console.log('Thanks for sharing!');
+        }).catch(console.error);
+    } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Shopping list copied to clipboard! You can now paste it into your preferred messaging app to share.');
+    }
 }

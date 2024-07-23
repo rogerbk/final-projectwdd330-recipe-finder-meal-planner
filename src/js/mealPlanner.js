@@ -107,13 +107,21 @@ function loadMealPlan() {
 
 function exportMealPlan() {
   const mealPlan = getMealPlanData();
-  const blob = new Blob([JSON.stringify(mealPlan, null, 2)], {
-    type: 'application/json',
-  });
+  let textContent = "Meal Plan\n\n";
+
+  for (const [day, meals] of Object.entries(mealPlan)) {
+    textContent += `${day.charAt(0).toUpperCase() + day.slice(1)}:\n`;
+    for (const [mealType, recipe] of Object.entries(meals)) {
+      textContent += `  ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}: ${recipe.title}\n`;
+    }
+    textContent += "\n";
+  }
+
+  const blob = new Blob([textContent], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'meal_plan.json';
+  a.download = 'meal_plan.txt';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

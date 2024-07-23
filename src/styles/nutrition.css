@@ -1,0 +1,47 @@
+.nutrition-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+}
+
+#ingredient-search {
+    width: 70%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#search-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.nutrition-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.recently-viewed {
+    flex: 1;
+}
+
+.nutrition-details {
+    flex: 2;
+}
+
+.additional-resources {
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .nutrition-content {
+        flex-direction: column;
+    }
+}

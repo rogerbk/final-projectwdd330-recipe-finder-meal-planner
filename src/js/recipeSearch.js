@@ -34,7 +34,7 @@ async function searchRecipes() {
   const diet = dietFilter ? dietFilter.value : '';
   const intolerances = intolerancesFilter ? Array.from(intolerancesFilter.selectedOptions).map((option) => option.value).join(',') : '';
 
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&ingredients=${ingredients}&cuisine=${cuisine}&diet=${diet}&intolerances=${intolerances}&number=${RESULTS_PER_PAGE}&offset=${(currentPage - 1) * RESULTS_PER_PAGE}`;
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&ingredients=${ingredients}&cuisine=${cuisine}&diet=${diet}&intolerances=${intolerances}&number=${RESULTS_PER_PAGE}&offset=${(currentPage - 1) * RESULTS_PER_PAGE}&addRecipeInformation=true&fillIngredients=true`;
 
   try {
     const response = await fetch(url);
@@ -42,7 +42,7 @@ async function searchRecipes() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log('API response:', data); // Log the entire response
+    console.log('API response:', data); 
     if (data.results && Array.isArray(data.results)) {
       totalResults = data.totalResults || 0;
       displayResults(data.results);
@@ -53,7 +53,7 @@ async function searchRecipes() {
   } catch (error) {
     console.error('Error fetching recipes:', error);
     alert(`Failed to fetch recipes. Error: ${error.message}`);
-    displayResults([]); // Display empty results
+    displayResults([]); 
   }
 }
 
@@ -72,14 +72,14 @@ function displayResults(recipes) {
     recipeCard.innerHTML = `
       <img src="${recipe.image}" alt="${recipe.title}">
       <h3>${recipe.title}</h3>
-      <p>Ready in: ${recipe.readyInMinutes || 'N/A'} minutes</p>
-      <p>Servings: ${recipe.servings || 'N/A'}</p>
-      <p>Health Score: ${recipe.healthScore || 'N/A'}</p>
-      <p>Diets: ${recipe.diets ? recipe.diets.join(', ') : 'N/A'}</p>
-      <p>Cuisines: ${recipe.cuisines ? recipe.cuisines.join(', ') : 'N/A'}</p>
-      <p>Dish Types: ${recipe.dishTypes ? recipe.dishTypes.join(', ') : 'N/A'}</p>
-      <p>Price per Serving: $${recipe.pricePerServing ? recipe.pricePerServing.toFixed(2) : 'N/A'}</p>
-      <p>Rating: ${recipe.spoonacularScore ? recipe.spoonacularScore.toFixed(1) : 'N/A'}</p>
+      ${recipe.readyInMinutes ? `<p>Ready in: ${recipe.readyInMinutes} minutes</p>` : ''}
+      ${recipe.servings ? `<p>Servings: ${recipe.servings}</p>` : ''}
+      ${recipe.healthScore ? `<p>Health Score: ${recipe.healthScore}</p>` : ''}
+      ${recipe.diets && recipe.diets.length > 0 ? `<p>Diets: ${recipe.diets.join(', ')}</p>` : ''}
+      ${recipe.cuisines && recipe.cuisines.length > 0 ? `<p>Cuisines: ${recipe.cuisines.join(', ')}</p>` : ''}
+      ${recipe.dishTypes && recipe.dishTypes.length > 0 ? `<p>Dish Types: ${recipe.dishTypes.join(', ')}</p>` : ''}
+      ${recipe.pricePerServing ? `<p>Price per Serving: $${recipe.pricePerServing.toFixed(2)}</p>` : ''}
+      ${recipe.spoonacularScore ? `<p>Rating: ${recipe.spoonacularScore.toFixed(1)}</p>` : ''}
     `;
     recipeCard.addEventListener('click', () => showRecipeDetails(recipe.id));
     searchResults.appendChild(recipeCard);
@@ -130,7 +130,6 @@ async function showRecipeDetails(recipeId) {
 }
 
 function displayRecipeModal(recipe) {
-  // Implement the modal display logic here
   console.log('Recipe details:', recipe);
   alert('Recipe details loaded. Check the console for more information.');
 }

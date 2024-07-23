@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Information</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/nutrition.css">
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/loadMealPlan.js"></script>
+    <script type="module" src="js/nutrition.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Nutrition</div>
+        <nav>
+            <button class="hamburger" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <ul class="nav-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="recipe-search.html">Recipe Search</a></li>
+              <li><a href="meal-planner.html">Meal Planner</a></li>
+              <li><a href="shopping-list.html">Shopping List</a></li>
+              <li><a href="nutrition.html">Nutrition</a></li>
+            </ul>
+          </nav>
+    </header>
+
+    <main role="main">
+        <section class="nutrition-info">
+            <h1>Nutrition Information</h1>
+            <div class="search-container">
+                <input type="text" id="ingredient-search" placeholder="Search ingredients...">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="nutrition-content">
+                <div class="recently-viewed">
+                    <h2>Recently Viewed</h2>
+                    <ul id="recent-ingredients"></ul>
+                </div>
+                <div class="nutrition-details">
+                    <h2>Nutritional Breakdown</h2>
+                    <div id="nutritional-breakdown"></div>
+                    <h2>Health Benefits</h2>
+                    <div id="health-benefits"></div>
+                    <h2>Related Recipes</h2>
+                    <div id="related-recipes"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Recipe Finder and Meal Planner. All rights reserved.</p>
+    </footer>
+</body>
+</html>
