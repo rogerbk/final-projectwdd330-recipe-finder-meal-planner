@@ -1,18 +1,18 @@
-import { defineConfig } from 'vite';
-import path from 'path';
+import { defineConfig } from "vite";
+import path from "path";
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'src'),
+  root: path.resolve(__dirname, "src"),
   build: {
-    outDir: path.resolve(__dirname, 'dist'),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'src/index.html'),
-        mealPlanner: path.resolve(__dirname, 'src/meal-planner.html'),
-        recipeSearch: path.resolve(__dirname, 'src/recipe-search.html'),
-        shoppingList: path.resolve(__dirname, 'src/shopping-list.html'),
-        nutrition: path.resolve(__dirname, 'src/nutrition.html'),
+        main: path.resolve(__dirname, "src/index.html"),
+        mealPlanner: path.resolve(__dirname, "src/meal-planner.html"),
+        recipeSearch: path.resolve(__dirname, "src/recipe-search.html"),
+        shoppingList: path.resolve(__dirname, "src/shopping-list.html"),
+        nutrition: path.resolve(__dirname, "src/nutrition.html"),
       },
     },
   },
@@ -20,6 +20,6 @@ export default defineConfig({
     port: 5173,
     open: true,
     strictPort: true,
-    historyApiFallback: true,
-  },
+    historyApiFallback: true
+  }
 });
